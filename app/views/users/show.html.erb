@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<% @user.attributes.reject {|k| k.include?("id")||k.include?("created_at")||k.include?("updated_at")}.each do |attr_name, attr_value| %>
+  <p>
+    <strong><%= attr_name.humanize %>:</strong>
+    <%= attr_value %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

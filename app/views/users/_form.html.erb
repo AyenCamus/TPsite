@@ -1,0 +1,53 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% User.columns.map {|c| c.name}[1..5].each do |data| %>
+    <div class="field">
+      <%= f.label data %><br>
+      <%= f.text_field data %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :ranks %><br>
+    <%= f.check_box :ranks, options_for_select(["President", "Admin", "Doctor", "Medic", "Psychic", "Fighter", "Defender", "Member", "Minor"]) %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.select :gender, options_for_select(["Male", "Female"]) %>
+  </div>
+  <% User.columns.map {|c| c.name}[7..-18].each do |data| %>
+    <div class="field">
+      <%= f.label data %><br>
+      <%= f.text_field data %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :corrective_lenses %><br>
+    <%= f.select :corrective_lenses, options_for_select(["No", "Yes"]) %>
+  </div>
+  <% User.columns.map {|c| c.name}[-16..-10].each do |data| %>
+    <div class="field">
+      <%= f.label data %><br>
+      <%= f.text_field data %>
+    </div>
+  <% end %>
+  <% User.columns.map {|c| c.name}[-9..-3].each do |data| %>
+    <div class="field">
+      <%= f.label data %><br>
+      <%= f.text_area data %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
