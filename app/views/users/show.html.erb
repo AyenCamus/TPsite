@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<% @user.ranks.each { |r| r } %>
-
 <% @user.attributes.reject {|k| k.include?("id")||k.include?("created_at")||k.include?("updated_at")}.each do |attr_name, attr_value| %>
   <p>
     <strong><%= attr_name.humanize %>:</strong>

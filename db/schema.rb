@@ -13,25 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20140819201850) do
 
-  create_table "ranks", force: true do |t|
-    t.integer "user_id"
-    t.boolean "president"
-    t.boolean "administrator"
-    t.boolean "psychic"
-    t.boolean "doctor"
-    t.boolean "medic"
-    t.boolean "fighter"
-    t.boolean "defender"
-    t.boolean "member"
-    t.boolean "minor"
-  end
-
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
     t.string   "nickname"
+    t.string   "ranks"
     t.string   "gender"
     t.string   "height"
     t.string   "weight"

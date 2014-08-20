@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :middle_name
       t.string :last_name
       t.string :nickname
+      t.string :ranks
       t.string :gender
       t.string :height
       t.string :weight
@@ -45,19 +46,6 @@ class CreateUsers < ActiveRecord::Migration
       t.text :strengths
       t.text :description
       t.timestamps
-    end
-
-    create_table :ranks do |t|
-      t.belongs_to :user
-      t.boolean :president
-      t.boolean :administrator
-      t.boolean :psychic
-      t.boolean :doctor
-      t.boolean :medic
-      t.boolean :fighter
-      t.boolean :defender
-      t.boolean :member
-      t.boolean :minor
     end
   end
 end
