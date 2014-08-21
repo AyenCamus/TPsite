@@ -21,7 +21,7 @@
     <%= f.label :gender %><br>
     <%= f.select :gender, options_for_select(["Male", "Female"]) %>
   </div>
-  <% User.columns.map {|c| c.name}[7..-18].each do |data| %>
+  <% User.columns.map {|c| c.name}[8..-18].each do |data| %>
     <div class="field">
       <%= f.label data %><br>
       <%= f.text_field data %>

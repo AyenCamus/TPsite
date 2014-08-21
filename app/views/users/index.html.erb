@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>First Name</th>
-      <th>Nickname</th>
+      <th>Alias</th>
       <th>Last Name</th>
       <th>Rank(s)</th>
       <th colspan="3"></th>
@@ -15,7 +15,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.first_name %></td>
-        <td><%= user.nickname %></td>
+        <td><%= user.alias %></td>
         <td><%= user.last_name %></td>
         <td><%= user.ranks %></td>
         <td><%= link_to 'Show', user %></td>
