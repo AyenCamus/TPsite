@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :middle_name
       t.string :last_name
-      t.string :nickname
+      t.string :alias
       t.string :ranks
       t.string :gender
       t.string :height
@@ -17,7 +17,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :date_of_birth
       t.string :race
       t.string :nationality
-      t.string :skin_color
       t.string :hometown
       t.string :occupation
       t.string :income
@@ -25,16 +24,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :special_attributes
       t.string :skills
       t.string :birth_order
-      t.string :siblings
-      t.string :spouse
-      t.string :children
-      t.string :significant_others
       t.string :relationship_skills
       t.string :corrective_lenses
       t.string :vices
       t.string :health
       t.string :disabilities
-      t.string :style
       t.string :education
       t.string :intelligence
       t.string :mental_illnesses

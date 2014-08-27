@@ -1,11 +1,48 @@
 <p id="notice"><%= notice %></p>
+<%= image_tag("http://www.placehold.it/200x200") %>
+<p>
+  <strong>Name:</strong>
+  <%= @user.first_name %> <%= "\"#{@user.alias}\"" if @user.alias && @user.alias != "" %> <%= @user.last_name %>
+</p>
 
-<% @user.attributes.reject {|k| k.include?("id")||k.include?("created_at")||k.include?("updated_at")}.each do |attr_name, attr_value| %>
-  <p>
-    <strong><%= attr_name.humanize %>:</strong>
-    <%= attr_value %>
-  </p>
-<% end %>
+<p><strong>Role(s):</strong>
+  <%= @user.ranks %>
+</p>
 
+<h2>Stats</h2>
+<p><strong>Gender:</strong>
+  <%= @user.gender %>
+</p>
+<p><strong>Date of Birth:</strong>
+  <%= @user.date_of_birth %>
+</p>
+<p><strong>Height:</strong>
+  <%= @user.height %>
+</p>
+<p><strong>Weight:</strong>
+  <%= @user.weight %>
+</p>
+<p><strong>Hair Color:</strong>
+  <%= @user.hair_color %>
+</p>
+<p><strong>Eye Color:</strong>
+  <%= @user.eye_color %>
+</p>
+<p><strong>Race:</strong>
+  <%= @user.race %>
+</p>
+<p><strong>Nationality:</strong>
+  <%= @user.nationality %>
+</p>
+
+<h2>Relationships</h2>
+
+<% @user.relationships.each do |r| %>
+  <% relation = User.find(r.relation_id) %>
+  <%= relation.first_name %> <%= "\"#{relation.alias}\"" if relation.alias && relation.alias != "" %> <%= relation.last_name %>, <%= r.kind %>
+<% end %><br>
+<%= link_to "New Relationship", new_user_relationship_path(@user) %>
+
+<br><br>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

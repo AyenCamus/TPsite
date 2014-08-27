@@ -11,38 +11,136 @@
     </div>
   <% end %>
 
-  <% User.columns.map {|c| c.name}[1..6].each do |data| %>
-    <div class="field">
-      <%= f.label data %><br>
-      <%= f.text_field data %>
-    </div>
-  <% end %>
+  <h2>Basic Stats</h2>
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :middle_name %><br>
+    <%= f.text_field :middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label "Alias(es)" %><br>
+    <%= f.text_field :alias %>
+  </div>
+  <div class="group">
+    <%= f.label :roles, "Roles", :class => :label %><br>
+    <% for role in User::ROLES %>
+      <%= f.check_box :ranks, :name => "#{f.object_name}[roles][]", value: role %>
+      <%= h role.humanize %><br />
+    <% end %>
+  </div>
   <div class="field">
     <%= f.label :gender %><br>
     <%= f.select :gender, options_for_select(["Male", "Female"]) %>
   </div>
-  <% User.columns.map {|c| c.name}[8..-18].each do |data| %>
-    <div class="field">
-      <%= f.label data %><br>
-      <%= f.text_field data %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= f.label :date_of_birth %><br>
+    <%= f.text_field :date_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br>
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :hair_color %><br>
+    <%= f.text_field :hair_color %>
+  </div>
+  <div class="field">
+    <%= f.label :eye_color %><br>
+    <%= f.text_field :eye_color %>
+  </div>
+  <div class="field">
+    <%= f.label :ethnicity %><br>
+    <%= f.text_field :race %>
+  </div>
+  <div class="field">
+    <%= f.label :nationality %><br>
+    <%= f.text_field :nationality %>
+  </div>
+
+  <h2>Other Information</h2>
+  <div class="field">
+    <%= f.label :hometown %><br>
+    <%= f.text_field :hometown %>
+  </div>
+  <div class="field">
+    <%= f.label :education %><br>
+    <%= f.text_field :education %>
+  </div>
+  <div class="field">
+    <%= f.label :occupation %><br>
+    <%= f.text_field :occupation %>
+  </div>
+  <div class="field">
+    <%= f.label :income %><br>
+    <%= f.text_field :income %>
+  </div>
+  <div class="field">
+    <%= f.label :religion %><br>
+    <%= f.text_field :religion %>
+  </div>
+  <div class="field">
+    <%= f.label "Special attributes/powers" %><br>
+    <%= f.text_field :special_attributes %>
+  </div>
+  <div class="field">
+    <%= f.label :skills %><br>
+    <%= f.text_field :skills %>
+  </div>
+  <div class="field">
+    <%= f.label :relationship_skills %><br>
+    <%= f.text_field :relationship_skills %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_order %><br>
+    <%= f.text_field :birth_order %>
+  </div>
+  <div class="field">
+    <%= f.label :health %><br>
+    <%= f.select :health, options_for_select(["Very Poor", "Poor", "Below Average", "Average", "Above Average", "Excellent"], selected: "Average") %>
+  </div>
+  <div class="field">
+    <%= f.label :vices %><br>
+    <%= f.text_field :vices %>
+  </div>
+  <div class="field">
+    <%= f.label :disabilities %><br>
+    <%= f.text_field :disabilities %>
+  </div>
   <div class="field">
     <%= f.label :corrective_lenses %><br>
     <%= f.select :corrective_lenses, options_for_select(["No", "Yes"]) %>
   </div>
-  <% User.columns.map {|c| c.name}[-16..-10].each do |data| %>
-    <div class="field">
-      <%= f.label data %><br>
-      <%= f.text_field data %>
-    </div>
-  <% end %>
-  <% User.columns.map {|c| c.name}[-9..-3].each do |data| %>
-    <div class="field">
-      <%= f.label data %><br>
-      <%= f.text_area data %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= f.label :mental_illnesses %><br>
+    <%= f.text_field :mental_illnesses %>
+  </div>
+  <div class="field">
+    <%= f.label :general_intelligence %><br>
+    <%= f.text_field :intelligence %>
+  </div>
+  <div class="field">
+    <%= f.label :distinguishing_features %><br>
+    <%= f.text_field :distinguishing_features %>
+  </div>
+  <div class="field">
+    <%= f.label :preferred_dress %><br>
+    <%= f.text_field :preferred_dress %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

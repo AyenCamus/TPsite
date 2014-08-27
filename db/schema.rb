@@ -11,14 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819201850) do
+ActiveRecord::Schema.define(version: 20140827020805) do
+
+  create_table "relationships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "relation_id"
+    t.string   "kind"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
-    t.string   "nickname"
+    t.string   "alias"
     t.string   "ranks"
     t.string   "gender"
     t.string   "height"
@@ -37,10 +45,6 @@ ActiveRecord::Schema.define(version: 20140819201850) do
     t.string   "special_attributes"
     t.string   "skills"
     t.string   "birth_order"
-    t.string   "siblings"
-    t.string   "spouse"
-    t.string   "children"
-    t.string   "significant_others"
     t.string   "relationship_skills"
     t.string   "corrective_lenses"
     t.string   "vices"
@@ -59,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140819201850) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
 end
