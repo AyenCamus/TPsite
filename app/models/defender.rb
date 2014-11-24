@@ -1,0 +1,2 @@
+class Defender < Role
+end

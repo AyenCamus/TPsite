@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag("http://www.placehold.it/200x200") %>
+<%= image_tag @user.avatar.url(:thumb)%>
 <p>
   <strong>Name:</strong>
-  <%= @user.first_name %> <%= "\"#{@user.alias}\"" if @user.alias && @user.alias != "" %> <%= @user.last_name %>
+  <%= @user.first_name %> <%= @user.alias && @user.alias != "" ? "\"#{@user.alias}\"" : "" %> <%= @user.last_name %>
 </p>
 
 <p><strong>Role(s):</strong>
-  <%= @user.ranks %>
+  <%= @user.roles.map(&:type).join(", ") %><br>
+  <%= link_to "Add Role", new_user_role_path(@user) %><br>
 </p>
 
 <h2>Stats</h2>
@@ -37,12 +38,17 @@
 
 <h2>Relationships</h2>
 
+<h3>Within the TP:</h3>
 <% @user.relationships.each do |r| %>
   <% relation = User.find(r.relation_id) %>
-  <%= relation.first_name %> <%= "\"#{relation.alias}\"" if relation.alias && relation.alias != "" %> <%= relation.last_name %>, <%= r.kind %>
+  <% nickname = relation.alias && relation.alias != "" ? " \"#{relation.alias}\" " : "" %>
+  <% name = relation.first_name + nickname + relation.last_name %>
+  <%= link_to name, relation %>, <%= r.kind %>
 <% end %><br>
-<%= link_to "New Relationship", new_user_relationship_path(@user) %>
+<%= link_to "Add TP Relationship", new_user_relationship_path(@user) %><br>
 
-<br><br>
+<h3>Outside the TP</h3>
+<%= @user.outside_relations %>
+<br>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

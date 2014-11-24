@@ -19,7 +19,7 @@
     <%= f.select :relation_id, options_for_select(@members) %>
   </div>
 
-  is <b><%= @user.first_name %> <%= "\"#{@user.alias}\"" if @user.alias && @user.alias != "" %> <%= @user.last_name %></b>'s
+  is <b><%= @user.first_name %> <%= @user.alias && @user.alias != "" ? "\"#{@user.alias}\"" : "" %> <%= @user.last_name %></b>'s
 
   <div class="field">
     <%= f.select :kind, options_for_select(["Mother", "Father", "Brother", "Sister", "Husband", "Wife", "Friend", "Boyfriend", "Girlfriend", "Fiance", "Aunt", "Uncle", "Cousin", "Grandfather", "Grandmother", "Ancestor", "Descendent", "Step-mother", "Step-father", "Step-brother", "Step-sister", "Legal Guardian", "Adoptive Parent", "Adopted Child"]) %>

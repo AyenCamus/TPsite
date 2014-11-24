@@ -12,6 +12,7 @@
   <% end %>
 
   <h2>Basic Stats</h2>
+
   <div class="field">
     <%= f.label :username %><br>
     <%= f.text_field :last_name %>
@@ -29,16 +30,19 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label "Alias(es)" %><br>
+    <%= f.label :alias, "Alias(es)" %><br>
     <%= f.text_field :alias %>
   </div>
-  <div class="group">
-    <%= f.label :roles, "Roles", :class => :label %><br>
-    <% for role in User::ROLES %>
-      <%= f.check_box :ranks, :name => "#{f.object_name}[roles][]", value: role %>
-      <%= h role.humanize %><br />
-    <% end %>
-  </div>
+  <div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  <div>
+    <p>
+    <label>
+      <%= f.check_box :remove_avatar %>
+      Remove avatar
+    </label>
+  </p>
   <div class="field">
     <%= f.label :gender %><br>
     <%= f.select :gender, options_for_select(["Male", "Female"]) %>
@@ -103,7 +107,7 @@
   </div>
   <div class="field">
     <%= f.label :relationship_skills %><br>
-    <%= f.text_field :relationship_skills %>
+    <%= f.select :relationship_skills, options_for_select(["Very Poor", "Poor", "Below Average", "Average", "Above Average", "Excellent"], selected: "Average") %>
   </div>
   <div class="field">
     <%= f.label :birth_order %><br>
@@ -119,7 +123,7 @@
   </div>
   <div class="field">
     <%= f.label :disabilities %><br>
-    <%= f.text_field :disabilities %>
+    <%= f.text_area :disabilities %>
   </div>
   <div class="field">
     <%= f.label :corrective_lenses %><br>
@@ -127,19 +131,23 @@
   </div>
   <div class="field">
     <%= f.label :mental_illnesses %><br>
-    <%= f.text_field :mental_illnesses %>
+    <%= f.text_area :mental_illnesses %>
   </div>
   <div class="field">
     <%= f.label :general_intelligence %><br>
-    <%= f.text_field :intelligence %>
+    <%= f.select :intelligence, options_for_select(["Very Low", "Low", "Below Average", "Average", "Above Average", "High", "Extremely High"], selected: "Average") %>
   </div>
   <div class="field">
     <%= f.label :distinguishing_features %><br>
-    <%= f.text_field :distinguishing_features %>
+    <%= f.text_area :distinguishing_features %>
   </div>
   <div class="field">
     <%= f.label :preferred_dress %><br>
-    <%= f.text_field :preferred_dress %>
+    <%= f.text_area :preferred_dress %>
+  </div>
+  <div class="field">
+    <%= f.label :outside_relations, "Non-TP relations" %><br>
+    <%= f.text_area :outside_relations %>
   </div>
   <div class="actions">
     <%= f.submit %>

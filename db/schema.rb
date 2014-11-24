@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827020805) do
+ActiveRecord::Schema.define(version: 20140919015733) do
 
   create_table "relationships", force: true do |t|
     t.integer  "user_id"
@@ -21,13 +21,17 @@ ActiveRecord::Schema.define(version: 20140827020805) do
     t.datetime "updated_at"
   end
 
+  create_table "roles", force: true do |t|
+    t.string  "type"
+    t.integer "user_id"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
     t.string   "alias"
-    t.string   "ranks"
     t.string   "gender"
     t.string   "height"
     t.string   "weight"
@@ -37,7 +41,6 @@ ActiveRecord::Schema.define(version: 20140827020805) do
     t.string   "date_of_birth"
     t.string   "race"
     t.string   "nationality"
-    t.string   "skin_color"
     t.string   "hometown"
     t.string   "occupation"
     t.string   "income"
@@ -50,7 +53,6 @@ ActiveRecord::Schema.define(version: 20140827020805) do
     t.string   "vices"
     t.string   "health"
     t.string   "disabilities"
-    t.string   "style"
     t.string   "education"
     t.string   "intelligence"
     t.string   "mental_illnesses"
@@ -64,6 +66,8 @@ ActiveRecord::Schema.define(version: 20140827020805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+    t.text     "outside_relations"
+    t.string   "avatar"
   end
 
 end
