@@ -1,4 +1,4 @@
-<h1>Add Role</h1>
+<h1>Add Role for <%= @user.first_name || @user.alias != "" ? "#{@user.alias}" : "" %></h1>
 
 <%= render 'form' %>
 

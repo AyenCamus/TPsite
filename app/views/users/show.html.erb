@@ -2,12 +2,19 @@
 <%= image_tag @user.avatar.url(:thumb)%>
 <p>
   <strong>Name:</strong>
-  <%= @user.first_name %> <%= @user.alias && @user.alias != "" ? "\"#{@user.alias}\"" : "" %> <%= @user.last_name %>
+  <%= @user.first_name %> <%= @user.alias != "" ? "\"#{@user.alias}\"" : "" %> <%= @user.last_name %>
 </p>
 
 <p><strong>Role(s):</strong>
   <%= @user.roles.map(&:type).join(", ") %><br>
   <%= link_to "Add Role", new_user_role_path(@user) %><br>
+</p>
+
+<p><strong>Known for:</strong><br>
+  <% list = %w{} %>
+  <% @user.media.each { |m| list << "#{m.name} (#{m.type})"} %>
+  <%= list.join("<br>").html_safe %><br>
+  <%= link_to "Add Appearance", new_user_medium_path(@user) %><br>
 </p>
 
 <h2>Stats</h2>

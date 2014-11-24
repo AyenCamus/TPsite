@@ -1,0 +1,5 @@
+<h1>Add Appearance for <%= @user.first_name || @user.alias != "" ? "#{@user.alias}" : "" %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', user_path(@user) %>

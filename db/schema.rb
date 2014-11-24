@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919015733) do
+ActiveRecord::Schema.define(version: 20141124032359) do
+
+  create_table "media", force: true do |t|
+    t.string  "type"
+    t.string  "name"
+    t.integer "user_id"
+  end
 
   create_table "relationships", force: true do |t|
     t.integer  "user_id"

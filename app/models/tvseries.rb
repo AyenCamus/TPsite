@@ -1,0 +1,2 @@
+class TVSeries < Medium
+end

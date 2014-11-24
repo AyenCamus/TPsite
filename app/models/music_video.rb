@@ -1,0 +1,2 @@
+class MusicVideo < Medium
+end
