@@ -48,7 +48,7 @@
 <h3>Within the TP:</h3>
 <% @user.relationships.each do |r| %>
   <% relation = User.find(r.relation_id) %>
-  <% nickname = relation.alias && relation.alias != "" ? " \"#{relation.alias}\" " : "" %>
+  <% nickname = relation.alias != "" ? " \"#{relation.alias}\" " : "" %>
   <% name = relation.first_name + nickname + relation.last_name %>
   <%= link_to name, relation %>, <%= r.kind %>
 <% end %><br>

@@ -1,4 +1,4 @@
-<h1>Add Appearance for <%= @user.first_name || @user.alias != "" ? "#{@user.alias}" : "" %></h1>
+<h1>Add Appearance for <%= @user.alias != "" ? "#{@user.alias}" : @user.first_name %></h1>
 
 <%= render 'form' %>
 
