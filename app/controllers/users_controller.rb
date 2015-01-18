@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if @user.remove_avatar
+      @user.avatar = "default.png"
+    end
   end
 
   # POST /users

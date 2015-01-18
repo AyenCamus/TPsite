@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :relationships, controller: 'relationships'
     resources :roles, controller: 'roles'
-    resources :media, controller: 'media'
+    resources :appearances, controller: 'appearances'
   end
+
+  resources :media
 
   root 'users#index'
 

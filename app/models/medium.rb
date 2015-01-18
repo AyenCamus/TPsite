@@ -1,5 +1,6 @@
 class Medium < ActiveRecord::Base
-  belongs_to :user
+  has_many :appearances
+  has_many :users, :through => :appearances
   scope :tv_series, -> {where(type: "TVSeries")}
   scope :movie, -> {where(type: "Movie")}
   scope :game, -> {where(type: "Game")}

@@ -7,14 +7,14 @@
 
 <p><strong>Role(s):</strong>
   <%= @user.roles.map(&:type).join(", ") %><br>
-  <%= link_to "Add Role", new_user_role_path(@user) %><br>
+  <%= link_to "Add", new_user_role_path(@user) %><br>
 </p>
 
 <p><strong>Known for:</strong><br>
   <% list = %w{} %>
   <% @user.media.each { |m| list << "#{m.name} (#{m.type})"} %>
   <%= list.join("<br>").html_safe %><br>
-  <%= link_to "Add Appearance", new_user_medium_path(@user) %><br>
+  <%= link_to "Add Appearance", new_user_appearance_path(@user) %><br>
 </p>
 
 <h2>Stats</h2>
@@ -22,7 +22,7 @@
   <%= @user.gender %>
 </p>
 <p><strong>Date of Birth:</strong>
-  <%= @user.date_of_birth %>
+  <%= @user.date_of_birth.strftime("%B %d, %Y") %>
 </p>
 <p><strong>Height:</strong>
   <%= @user.height %>
@@ -50,12 +50,11 @@
   <% relation = User.find(r.relation_id) %>
   <% nickname = relation.alias != "" ? " \"#{relation.alias}\" " : "" %>
   <% name = relation.first_name + nickname + relation.last_name %>
-  <%= link_to name, relation %>, <%= r.kind %>
+  <%= link_to name, relation %>, <%= r.kind %><br>
 <% end %><br>
 <%= link_to "Add TP Relationship", new_user_relationship_path(@user) %><br>
 
 <h3>Outside the TP</h3>
 <%= @user.outside_relations %>
 <br>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Back', users_path %>

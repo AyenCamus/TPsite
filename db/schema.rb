@@ -11,13 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124032359) do
+ActiveRecord::Schema.define(version: 20141217000207) do
+
+  create_table "appearances", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "medium_id"
+    t.datetime "first_appearance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "media", force: true do |t|
     t.string  "type"
     t.string  "name"
     t.integer "user_id"
   end
+
+  create_table "media_users", id: false, force: true do |t|
+    t.integer "user_id",   null: false
+    t.integer "medium_id", null: false
+  end
+
+  add_index "media_users", ["medium_id", "user_id"], name: "index_media_users_on_medium_id_and_user_id"
+  add_index "media_users", ["user_id", "medium_id"], name: "index_media_users_on_user_id_and_medium_id"
 
   create_table "relationships", force: true do |t|
     t.integer  "user_id"
@@ -44,7 +60,6 @@ ActiveRecord::Schema.define(version: 20141124032359) do
     t.string   "hair_color"
     t.string   "eye_color"
     t.string   "orientation"
-    t.string   "date_of_birth"
     t.string   "race"
     t.string   "nationality"
     t.string   "hometown"
@@ -74,6 +89,9 @@ ActiveRecord::Schema.define(version: 20141124032359) do
     t.string   "image"
     t.text     "outside_relations"
     t.string   "avatar"
+    t.datetime "date_of_birth"
+    t.integer  "feet"
+    t.integer  "inches"
   end
 
 end
